@@ -6,7 +6,6 @@ import { getSortedPostData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 
-import Head from "next/head"
 import { Component } from 'react'
 import { attributes, react as HomeContent } from '../content/home.md';
 
