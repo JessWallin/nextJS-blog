@@ -9,67 +9,67 @@ import Date from '../components/date';
 import { Component } from 'react'
 import { attributes, react as HomeContent } from '../content/home.md';
 
-export default class Home extends Component {
-  render() {
-    let { title, cats } = attributes;
-    return (
-      <>
-        <Head>
-          <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-        </Head>
-        <article>
-          <h1>{title}</h1>
-          <HomeContent />
-          <ul>
-            {cats.map((cat, k) => (
-              <li key={k}>
-                <h2>{cat.name}</h2>
-                <p>{cat.description}</p>
-              </li>
-            ))}
-          </ul>
-        </article>
-      </>
-    )
-  }
-}
-
-// export default function Home({ allPostsData }) {
-//   return (
-//     <Layout home>
-//       <Head>
-//         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-//       </Head>
-//       <section className={utilStyles.headingMd}>
-//         <div className={styles.homeContainer}>
-//         <img src="/images/jessandhawk.jpg" alt="a very cute pup" className={styles.profileImage} />
-//         <div className={utilStyles.break}></div>
-//         <p>Hey! I'm Jess. I am a software engineer. I live with my dog and my partner in Brooklyn.</p>
-//         </div>
-//         <p>
-//           (This is a sample website - you’ll be building a site like this on{' '}
-//           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-//         </p>
-//       </section>
-//       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-//         <h2 className={utilStyles.headingLg}>Blog</h2>
-//         <ul className={utilStyles.list}>
-//           {allPostsData.map(({ id, date, title }) => (
-//            <li className={utilStyles.listItem} key={id}>
-//             <Link href={`/posts/${id}`}>
-//               <a>{title}</a>
-//             </Link>
-//             <br />
-//             <small className={utilStyles.lightText}>
-//               <Date dateString={date} />
-//             </small>
-//           </li>
-//           ))}
-//         </ul>
-//       </section>
-//     </Layout>
-//   )
+// export default class Home extends Component {
+//   render() {
+//     let { title, cats } = attributes;
+//     return (
+//       <>
+//         <Head>
+//           <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+//         </Head>
+//         <article>
+//           <h1>{title}</h1>
+//           <HomeContent />
+//           <ul>
+//             {cats.map((cat, k) => (
+//               <li key={k}>
+//                 <h2>{cat.name}</h2>
+//                 <p>{cat.description}</p>
+//               </li>
+//             ))}
+//           </ul>
+//         </article>
+//       </>
+//     )
+//   }
 // }
+
+export default function Home({ allPostsData }) {
+  return (
+    <Layout home>
+      <Head>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+      </Head>
+      <section className={utilStyles.headingMd}>
+        <div className={styles.homeContainer}>
+        <img src="/images/jessandhawk.jpg" alt="a very cute pup" className={styles.profileImage} />
+        <div className={utilStyles.break}></div>
+        <p>Hey! I'm Jess. I am a software engineer. I live with my dog and my partner in Brooklyn.</p>
+        </div>
+        <p>
+          (This is a sample website - you’ll be building a site like this on{' '}
+          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
+        </p>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+           <li className={utilStyles.listItem} key={id}>
+            <Link href={`/posts/${id}`}>
+              <a>{title}</a>
+            </Link>
+            <br />
+            <small className={utilStyles.lightText}>
+              <Date dateString={date} />
+            </small>
+          </li>
+          ))}
+        </ul>
+      </section>
+    </Layout>
+  )
+}
 
 export async function getStaticProps() {
   const allPostsData = getSortedPostData()
